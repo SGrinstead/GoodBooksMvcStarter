@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Book>
+@{
+	var selectedStringIds = ViewData["SelectedStringIds"] as List<string>;
+}
+
+@foreach(var book in Model)
+{
+	<h5>@book.Title</h5>
+	<p>@book.Description</p>
+	@if(!selectedStringIds.Contains(book.Id.ToString()))
+	{
+		<a href="/books?selectedBookId=@book.Id">compare</a>
+	}
+}
